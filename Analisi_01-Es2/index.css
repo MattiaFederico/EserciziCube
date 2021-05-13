@@ -1,0 +1,33 @@
+h4{
+  text-transform: uppercase;
+}
+
+.green{
+  border: 3px solid green;
+  padding: 10px;
+  border-radius: 2%;
+}
+
+.red{
+  margin-top: 10px;
+  border: 3px solid red;
+  padding: 10px;
+  border-radius: 2%;
+}
+
+.btn{
+  margin: 5px 0;
+}
+
+.btn:focus{
+  background-color: green;
+}
+
+.icons{
+  padding: 10px;
+  text-align: center;
+}
+
+i{
+  font-size: 30px;
+}

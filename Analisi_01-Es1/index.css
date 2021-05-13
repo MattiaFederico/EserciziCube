@@ -1,0 +1,54 @@
+body{
+  background-color: lightskyblue;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  margin: 50px auto;
+  background-color: yellow;
+}
+
+.numBlock{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border: 3px solid green;
+  margin: 5px;
+}
+
+.operator{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#sum{
+  border: 3px solid lightgreen;
+  padding: 10px;
+  margin: 5px;
+}
+
+#check{
+  background-color: red;
+  color: #fff;
+  border: none;
+  width: 100px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#msgContainer{
+  margin: 0 50px;
+}
+
+#message{
+  padding: 20px;
+  display: none;
+  text-align: center;
+  background-color: blueviolet;
+}

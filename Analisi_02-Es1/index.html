@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container-fluid bg">
+    <h1 id="title" class="text-center text-white"></h1>
+    <div class="container">
+      <div class="row justify-content-center" id="registration">
+        <div class="col-4">
+          <div class="bg-primary my-4 p-4">
+            <h5>Hire a new prison guard</h5>
+            <div class="form-group mt-4">
+              <input id="guard_name" type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group mt-4">
+              <input id="guard_lastname" type="text" class="form-control" placeholder="Lastname">
+            </div>
+            <div class="form-group mt-4">
+              <input id="guard_birth" type="text" class="form-control" placeholder="Birthdate">
+            </div>
+            <button id="guard_btn" type="button" class="btn btn-dark">Register</button>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="bg-danger my-4 p-4">
+            <h5>Register a new prisoner</h5>
+            <div class="form-group mt-4">
+              <input id="prisoner_name" type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group mt-4">
+              <input id="prisoner_lastname" type="text" class="form-control" placeholder="Lastname">
+            </div>
+            <div class="form-group mt-4">
+              <input id="prisoner_birth" type="text" class="form-control" placeholder="Birthdate">
+            </div>
+            <button id="prisoner_btn" type="button" class="btn btn-dark">Register</button>        
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="bg-success my-4 p-4">
+            <h5>Register a new dossier</h5>
+            <div class="form-group mt-4">
+              <input id="d_prisoner_id" type="number" class="form-control" placeholder="Prisoner ID">
+            </div>
+            <div class="form-group mt-4">
+              <input id="d_imprisonement_date" type="text" class="form-control" placeholder="Imprisonement Date">
+            </div>
+            <div class="form-group mt-4">
+              <input id="d_prisoner_crime" type="text" class="form-control" placeholder="Crime Committed">
+            </div>
+            <button id="dossier_btn" type="button" class="btn btn-dark">Register</button>                 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-white">
+      <div class="row" id="resultsContainer">
+        <div class="col-4" id="guardsContainer">
+          <table>
+            <thead id="guardsTableHead">
+              <tr></tr>
+            </thead>
+            <tbody id="guardsTableBody"></tbody>
+          </table>
+        </div>
+        <div class="col-4" id="prisonersContainer">
+          <table>
+            <thead id="prisonersTableHead"></thead>
+            <tbody id="prisonersTableBody"></tbody>
+          </table>
+        </div>
+        <div class="col-4" id="dossiersContainer">
+          <table>
+            <thead id="dossierTableHead"></thead>
+            <tbody id="dossierTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
