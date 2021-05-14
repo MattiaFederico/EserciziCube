@@ -19,7 +19,7 @@ var prison = {
       id: 1,
       name: "Stefano",
       lastname: "Bianchi",
-      birthdate: "01/11/1997"
+      birthdate: "01/11/1977"
     },
     {
       id: 2,
@@ -32,6 +32,12 @@ var prison = {
       name: "Mariano",
       lastname: "Giusti",
       birthdate: "07/01/1982"
+    },
+    {
+      id: 4,
+      name: "Cornelio",
+      lastname: "Maroni",
+      birthdate: "07/01/1982"
     }
   ],
   dossier: [
@@ -39,7 +45,7 @@ var prison = {
       id: 1,
       prisoner_id: 1,
       imprisonement_date: "01/11/1997",
-      release_date: "00/00/0000",
+      release_date: "01/11/2027",
       crime: "crime",
       status: "in jail"
     },
@@ -58,13 +64,22 @@ var prison = {
       release_date: "00/00/0000",
       crime: "crime",
       status: "dead"
-    }
+    },
+    {
+      id: 4,
+      prisoner_id: 4,
+      imprisonement_date: "03/12/2001",
+      release_date: "00/00/0000",
+      crime: "crime",
+      status: "escaped"
+    },
   ]
 }
 
 $(document).ready( () => {
   $("#title").html("Welcome to " + prison.name);
   tableInit();
+  summary();
 });
 
 $("#guard_btn").click( () => {
@@ -123,7 +138,37 @@ function search(){
 }
 
 function summary(){
+  let guards = prison.guards;
+  let prisoners = prison.prisoners;
+  let dossiers = prison.dossier;
 
+  let guardsCount = guards.length;
+  let escapedPrisonersCount = countFatalities( "escaped" );
+  let deadPrisonersCount = countFatalities( "dead" );
+  let prisonersCount = (prisoners.length - ( escapedPrisonersCount + deadPrisonersCount ));
+
+  let summaryGuards = $("#summaryGuards");
+  let summaryPrisoners = $("#summaryPrisoners");
+  let summaryEscaped = $("#summaryEscaped");
+  let summaryDead = $("#summaryDead");
+
+  summaryGuards.html("Numero di guardie nel carcere: " + guardsCount );
+  summaryPrisoners.html("Numero di prigionieri nel carcere(tot): " + prisonersCount );
+  summaryEscaped.html("Numero di prigionieri evasi dal carcere: " + escapedPrisonersCount );
+  summaryDead.html("Numero di prigionieri morti nel carcere: " + deadPrisonersCount );
+
+  console.log(dossiers);
+}
+
+function countFatalities( cond ){
+  let counter = 0;
+  let dossiers = prison.dossier;
+  dossiers.forEach( (obj) => {
+    if(obj.status === cond){
+      counter++;
+    }
+  });
+  return counter;
 }
 
 function getCurrentData( array, table ){
@@ -186,17 +231,18 @@ function writeNewDossier( array, val1, val2, val3, val4, table ){
   let id = array[(array.length - 1)].id + 1;
 
   if( val1 < id ){
-    $("#formFeedback").html("Prigioniero già presente");
+    $("#formFeedback").html("Dossier già registrato");
   } else {
-    array.push({
+    let obj = {
       id: id,
       prisoner_id: val1,
       imprisonement_date: val2,
       release_date: val3,
-      crime: val4
-    });
+      crime: val4,
+      status: "in jail"
+    };
 
-    console.log(array)
+    array.push(obj);
 
     let trBody = $("<tr></tr>");
     let td1 = $("<td></td>");
@@ -204,19 +250,22 @@ function writeNewDossier( array, val1, val2, val3, val4, table ){
     let td3 = $("<td></td>");
     let td4 = $("<td></td>");
     let td5 = $("<td></td>");
+    let td6 = $("<td></td>");
   
     td1.html(id);
     td2.html(val1);
     td3.html(val2);
     td4.html(val3);
     td5.html(val4);
+    td6.html(obj.status);
   
     trBody.append(td1);
     trBody.append(td2);
     trBody.append(td3);
     trBody.append(td4);
     trBody.append(td5);
-  
+    trBody.append(td6);
+
     table.append(trBody);
   }
  
@@ -231,7 +280,6 @@ function writeNewAnagraphic( array, val1, val2, val3, table ){
     lastname: val2,
     birthdate: val3
   });
-  console.log(array)
 
   let trBody = $("<tr></tr>");
   let td1 = $("<td></td>");

@@ -12,6 +12,7 @@
   <div class="container-fluid bg">
     <h1 id="title" class="text-center text-white"></h1>
     <div class="container">
+      <div class="row"><div class="col-6 m-auto bg-white text-center font-bold" id="formFeedback"></div></div>
       <div class="row justify-content-center" id="registration">
         <div class="col-4">
           <div class="bg-primary my-4 p-4">
@@ -53,30 +54,55 @@
               <input id="d_imprisonement_date" type="text" class="form-control" placeholder="Imprisonement Date">
             </div>
             <div class="form-group mt-4">
+              <input id="d_release_date" type="text" class="form-control" placeholder="Release Date">
+            </div>
+            <div class="form-group mt-4">
               <input id="d_prisoner_crime" type="text" class="form-control" placeholder="Crime Committed">
             </div>
             <button id="dossier_btn" type="button" class="btn btn-dark">Register</button>                 
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-6 m-auto">
+          <div id="searchResults" class="bg-dark text-white">
+            <ul></ul>
+          </div>
+          <div class="form-group mt-4 d-flex justify-content-between">
+            <input id="search" type="text" class="form-control" placeholder="Search By Prisoner Name">
+            <button id="searchBtn" class="btn btn-primary" type="button">Search</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container-fluid bg-white">
-      <div class="row" id="resultsContainer">
-        <div class="col-4" id="guardsContainer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 bg-white" id="summary">
+          <div id="summaryGuards"></div>
+          <div id="summaryPrisoners"></div>
+          <div id="summaryEscaped"></div>
+          <div id="summaryDead"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row bg-white" id="resultsContainer">
+        <div class="col-12 col-sm-6 col-lg-3 tableContainer" id="guardsContainer">
+          <h4>Guards</h4>
           <table>
-            <thead id="guardsTableHead">
-              <tr></tr>
-            </thead>
+            <thead id="guardsTableHead"></thead>
             <tbody id="guardsTableBody"></tbody>
           </table>
         </div>
-        <div class="col-4" id="prisonersContainer">
+        <div class="col-12 col-sm-6 col-lg-3 tableContainer" id="prisonersContainer">
+          <h4>Prisoners</h4>
           <table>
             <thead id="prisonersTableHead"></thead>
             <tbody id="prisonersTableBody"></tbody>
           </table>
         </div>
-        <div class="col-4" id="dossiersContainer">
+        <div class="col-12 col-sm-12 col-lg-6 tableContainer" id="dossiersContainer">
+          <h4>Dossiers</h4>
           <table>
             <thead id="dossierTableHead"></thead>
             <tbody id="dossierTableBody"></tbody>
@@ -87,6 +113,6 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="index.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
