@@ -1,0 +1,54 @@
+<mvc:View 
+  controllerName="App.controller.Anagrafica" 
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m" 
+  displayBlock="true" 
+  height="100%" 
+  busyIndicatorDelay="0"
+>
+  <Page title="{i18n>mainTitle}" showNavButton="true" navButtonPress="onNavBack">
+    <content>
+      <Table id="prodotti" items="{products>/Products}">
+        <columns>
+          <Column
+            width="12em">
+            <Text text="Product ID" />
+          </Column>
+          <Column
+            width="12em">
+            <Text text="Product Name" />
+          </Column>
+          <Column
+            width="12em">
+            <Text text="Quantity Per Unit" />
+          </Column>
+          <Column
+            width="12em">
+            <Text text="Unit Price" />
+          </Column>
+          <Column
+            width="12em">
+            <Text text="Units in Stock" />
+          </Column>
+          <Column
+            width="12em">
+            <Text text="Discontinued" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem >
+            <cells>
+              <Text text="{products>ProductID}" />
+              <Text text="{products>ProductName}" />
+              <Text text="{products>QuantityPerUnit}" />
+              <Text text="{ path: 'products>UnitPrice', formatter: '.formatter.formatPrice' }" />
+              <Text text="{products>UnitsInStock}" />
+              <core:Icon src="{path: 'products>Discontinued', formatter: '.formatter.toIcon'}" color="{= ${products>Discontinued} ? 'green' : 'red' }"/>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Page>
+</mvc:View>

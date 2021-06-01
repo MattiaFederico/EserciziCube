@@ -1,0 +1,16 @@
+<mvc:View 
+  controllerName="App.controller.App" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns="sap.m" 
+  displayBlock="true" 
+  height="100%" 
+  busyIndicatorDelay="0"
+>
+  <Page title="{i18n>mainTitle}">
+    <content>
+      <GenericTile header="Lista Prodotti" press="onNavTo('anagrafica')">
+        <TileContent footer="Scegliere Icona" />
+      </GenericTile>
+    </content>
+  </Page>
+</mvc:View>

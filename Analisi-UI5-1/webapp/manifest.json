@@ -1,0 +1,85 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "App",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "App.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "dependencies": {
+      "minUI5Version": "1.60",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "App.i18n.i18n"
+        }
+      },
+      "products": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/Products.json"
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "App.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "master",
+          "target": "master"
+        },
+        {
+          "pattern": "anagrafica",
+          "name": "anagrafica",
+          "target": "anagrafica"
+        }
+      ],
+      "targets": {
+        "master": {
+          "viewId": "master",
+          "viewName": "Master",
+          "viewLevel": 1
+        },
+        "anagrafica": {
+          "viewId": "anagrafica",
+          "viewName": "Anagrafica",
+          "viewLevel": 2
+        }
+      }
+    }
+  }
+}
