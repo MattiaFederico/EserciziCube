@@ -1,4 +1,4 @@
-<mvc:View 
+<mvc:View xmlns:core="sap.ui.core" 
   controllerName="App.controller.App" 
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
@@ -8,8 +8,10 @@
 >
   <Page title="{i18n>mainTitle}">
     <content>
-      <GenericTile header="Lista Prodotti" press="onNavTo('anagrafica')">
-        <TileContent footer="Scegliere Icona" />
+      <GenericTile class="sapUiMediumMarginTop sapUiMediumMarginBegin" imageDescription="sap-icon://product" header="Lista Prodotti" press="onNavTo('anagrafica')">
+        <TileContent >
+          <core:Icon src="sap-icon://product" height="100%" width="100%" size="75px"/>
+        </TileContent>
       </GenericTile>
     </content>
   </Page>

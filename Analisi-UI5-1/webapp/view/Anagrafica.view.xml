@@ -8,6 +8,11 @@
   busyIndicatorDelay="0"
 >
   <Page title="{i18n>mainTitle}" showNavButton="true" navButtonPress="onNavBack">
+    <Panel class="sapUiVisibleOnlyOnDesktop">
+      <Button icon="sap-icon://sort" press="sortById" />
+      <Input id="search" liveChange="searchProduct" placeholder="Filter" width="40%"/>
+      <Button icon="sap-icon://decline" press="clearInput" />
+    </Panel>
     <content>
       <Table id="prodotti" items="{products>/Products}">
         <columns>
