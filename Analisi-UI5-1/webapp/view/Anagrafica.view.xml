@@ -16,28 +16,22 @@
     <content>
       <Table id="prodotti" items="{products>/Products}">
         <columns>
-          <Column
-            width="12em">
+          <Column>
             <Text text="Product ID" />
           </Column>
-          <Column
-            width="12em">
+          <Column>
             <Text text="Product Name" />
           </Column>
-          <Column
-            width="12em">
+          <Column>
             <Text text="Quantity Per Unit" />
           </Column>
-          <Column
-            width="12em">
+          <Column>
             <Text text="Unit Price" />
           </Column>
-          <Column
-            width="12em">
+          <Column>
             <Text text="Units in Stock" />
           </Column>
-          <Column
-            width="12em">
+          <Column>
             <Text text="Discontinued" />
           </Column>
         </columns>

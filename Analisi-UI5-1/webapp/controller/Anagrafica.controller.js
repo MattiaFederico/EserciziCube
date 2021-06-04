@@ -17,19 +17,28 @@ sap.ui.define([
       this.getView().setModel(oModel, "Products");
     },
     searchProduct: function( oControlEvent ) {
-      let oFitler = new Filter({
-        path: "ProductName",
-        operator: FilterOperator.Contains,
-        value1: oControlEvent.getParameter("value")
-      });
-
       let oTable = this.getView().byId("prodotti");
-      oTable.getBinding("items").filter(oFitler);
+      if( oControlEvent !== undefined ){
+        let oFitler = new Filter({
+          path: "ProductName",
+          operator: FilterOperator.Contains,
+          value1: oControlEvent.getParameter("value")
+        });
+        oTable.getBinding("items").filter(oFitler);
+      } else {
+        let oFitler = new Filter({
+          path: "ProductName",
+          operator: FilterOperator.Contains,
+          value1: ""
+        });
+        oTable.getBinding("items").filter(oFitler);
+      }
     },
     clearInput: function() {
       let oInput = this.byId("search");
       if( oInput !== undefined ){
         oInput.setValue("");
+        this.searchProduct();
       }      
     },
     sortById: function() {
