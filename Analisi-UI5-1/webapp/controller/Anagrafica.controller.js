@@ -5,8 +5,9 @@ sap.ui.define([
   'sap/ui/model/Sorter',
   'sap/ui/model/Filter',
   'sap/ui/model/FilterOperator',
-  "sap/m/Dialog"
-], function( BaseController, JSONModel, formatter, Sorter, Filter, FilterOperator, Dialog ) {
+  "sap/m/Dialog",
+  "sap/m/DialogType"
+], function( BaseController, JSONModel, formatter, Sorter, Filter, FilterOperator, Dialog, DialogType ) {
   'use strict';
 
   var stateChange = true;
@@ -60,6 +61,7 @@ sap.ui.define([
 
       if (!this.pDialog) {
 				this.pDialog = new Dialog({
+          type: DialogType.Message,
           content: new sap.m.Text({
             id: 'msg'
           }),
@@ -70,7 +72,7 @@ sap.ui.define([
             }.bind(this)
           })
         });
-        this.pDialog.setBindingContext(item, "item");
+        //this.pDialog.setBindingContext(item, "item");
       }
 
       oView.addDependent(this.pDialog);
@@ -78,11 +80,11 @@ sap.ui.define([
       if( item.Discontinued ){
         this.pDialog.setProperty("title", "Success"); 
         this.pDialog.setProperty("icon", "sap-icon://message-success");
-        sap.ui.getCore().byId("msg").setText( "Prodotto non più disponibile");
+        this.pDialog.getContent()[0].setProperty( "text", "Prodotto non più disponibile");
       } else {
         this.pDialog.setProperty("title", "Error");
         this.pDialog.setProperty("icon", "sap-icon://message-error");
-        sap.ui.getCore().byId("msg").setText("Prodotto disponibile");
+        this.pDialog.getContent()[0].setProperty( "text", "Prodotto disponibile");
       }
       this.pDialog.open();
     }
