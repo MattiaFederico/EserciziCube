@@ -8,7 +8,7 @@
   busyIndicatorDelay="0"
 >
   <Page title="{i18n>mainTitle}" showNavButton="true" navButtonPress="onNavBack">
-    <Panel class="sapUiVisibleOnlyOnDesktop">
+    <Panel visible="{= ${device>/system/desktop} }">
       <Button icon="sap-icon://sort" press="sortById" />
       <Input id="search" liveChange="searchProduct" placeholder="Filter" width="40%"/>
       <Button icon="sap-icon://decline" press="clearInput" />
@@ -34,6 +34,9 @@
           <Column>
             <Text text="Discontinued" />
           </Column>
+          <Column visible="{= ${device>/system/desktop} }">
+            <Text text="Disponibilità"/>
+          </Column>
         </columns>
         <items>
           <ColumnListItem >
@@ -44,6 +47,7 @@
               <Text text="{ path: 'products>UnitPrice', formatter: '.formatter.formatPrice' }" />
               <Text text="{products>UnitsInStock}" />
               <core:Icon src="{path: 'products>Discontinued', formatter: '.formatter.toIcon'}" color="{= ${products>Discontinued} ? 'green' : 'red' }"/>
+              <core:Icon src="sap-icon://attachment" press="openDialog"/>
             </cells>
           </ColumnListItem>
         </items>

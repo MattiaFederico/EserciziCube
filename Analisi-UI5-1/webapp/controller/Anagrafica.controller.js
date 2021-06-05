@@ -4,8 +4,9 @@ sap.ui.define([
   'App/model/formatter',
   'sap/ui/model/Sorter',
   'sap/ui/model/Filter',
-  'sap/ui/model/FilterOperator'
-], function( BaseController, JSONModel, formatter, Sorter, Filter, FilterOperator ) {
+  'sap/ui/model/FilterOperator',
+  "sap/m/Dialog"
+], function( BaseController, JSONModel, formatter, Sorter, Filter, FilterOperator, Dialog ) {
   'use strict';
 
   var stateChange = true;
@@ -52,6 +53,38 @@ sap.ui.define([
     
       oTable.getBinding("items").sort(oSorter);
       stateChange = !stateChange;
+    },
+    openDialog: function( evt ) {
+      let oView = this.getView();
+      let item = evt.getSource().getBindingContext("products").getObject();
+
+      if (!this.pDialog) {
+				this.pDialog = new Dialog({
+          content: new sap.m.Text({
+            id: 'msg'
+          }),
+          endButton: new sap.m.Button({
+            text: "Chiudi",
+            press: function() {
+              this.pDialog.close();
+            }.bind(this)
+          })
+        });
+        this.pDialog.setBindingContext(item, "item");
+      }
+
+      oView.addDependent(this.pDialog);
+
+      if( item.Discontinued ){
+        this.pDialog.setProperty("title", "Success"); 
+        this.pDialog.setProperty("icon", "sap-icon://message-success");
+        sap.ui.getCore().byId("msg").setText( "Prodotto non più disponibile");
+      } else {
+        this.pDialog.setProperty("title", "Error");
+        this.pDialog.setProperty("icon", "sap-icon://message-error");
+        sap.ui.getCore().byId("msg").setText("Prodotto disponibile");
+      }
+      this.pDialog.open();
     }
   });
 });
