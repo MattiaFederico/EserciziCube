@@ -13,6 +13,12 @@ sap.ui.define([
       UIComponent.prototype.init.apply(this, []);
       this.getRouter().initialize();
 
+      let oModel = new JSONModel("./model/Products.json");
+      this.setModel(oModel, "Products");
+
+      let suppliersModel = new JSONModel("./model/Suppliers.json")
+      this.setModel(suppliersModel, "Suppliers");
+
       let oDeviceModel = new JSONModel(Device);
       oDeviceModel.setDefaultBindingMode("OneWay");
       this.setModel(oDeviceModel, "device");

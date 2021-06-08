@@ -1,23 +1,18 @@
 sap.ui.define([
   'App/controller/BaseController',
-  'sap/ui/model/json/JSONModel',
   'App/model/formatter',
   'sap/ui/model/Sorter',
   'sap/ui/model/Filter',
   'sap/ui/model/FilterOperator',
   "sap/m/Dialog",
   "sap/m/DialogType"
-], function( BaseController, JSONModel, formatter, Sorter, Filter, FilterOperator, Dialog, DialogType ) {
+], function( BaseController, formatter, Sorter, Filter, FilterOperator, Dialog, DialogType ) {
   'use strict';
 
   var stateChange = true;
 
   BaseController.extend( "App.controller.Anagrafica" , {
     formatter: formatter,
-    onInit: function(){
-      let oModel = new JSONModel("./model/Products.json");
-      this.getView().setModel(oModel, "Products");
-    },
     searchProduct: function( oControlEvent ) {
       let oTable = this.getView().byId("prodotti");
       if( oControlEvent !== undefined ){
@@ -72,7 +67,6 @@ sap.ui.define([
             }.bind(this)
           })
         });
-        //this.pDialog.setBindingContext(item, "item");
       }
 
       oView.addDependent(this.pDialog);
@@ -87,6 +81,29 @@ sap.ui.define([
         this.pDialog.getContent()[0].setProperty( "text", "Prodotto disponibile");
       }
       this.pDialog.open();
+    },
+    toDetails: function( oControlEvent ) {
+      let itemPath = oControlEvent.getSource().getBindingContext("products").getPath();
+			let item = this.getModel("products").getProperty(itemPath);
+      let itemID = item.ProductID;
+      
+			let oRouter = this.getRouter();
+      if( this.checkForMissingId(itemID) ){
+        oRouter.navTo("productDetails", { ProductID: itemID });
+      } else {
+        sap.m.MessageToast.show("Nessun fornitore associato");
+      }
+    },
+    checkForMissingId: function( itemID ) {
+      let suppliersArray = this.getModel("Suppliers").getData().Suppliers;
+      let productsArray = this.getModel("Products").getData().Products[itemID - 1];
+      let validator = false;
+      suppliersArray.forEach( obj => {
+        if( obj.ProductID === productsArray.ProductID ){
+          validator = true;
+        }
+      })
+      return validator;
     }
   });
 });

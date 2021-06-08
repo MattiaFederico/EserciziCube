@@ -45,6 +45,10 @@
       "products": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "./model/Products.json"
+      },
+      "suppliers": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/Suppliers.json"
       }
     },
     "routing": {
@@ -66,6 +70,11 @@
           "pattern": "anagrafica",
           "name": "anagrafica",
           "target": "anagrafica"
+        },
+        {
+          "pattern": "anagrafica/{ProductID}",
+          "name": "productDetails",
+          "target": "productDetails"
         }
       ],
       "targets": {
@@ -78,6 +87,11 @@
           "viewId": "anagrafica",
           "viewName": "Anagrafica",
           "viewLevel": 2
+        },
+        "productDetails": {
+          "viewId": "productDetails",
+          "viewName": "ProductDetails",
+          "viewLevel": 3
         }
       }
     }

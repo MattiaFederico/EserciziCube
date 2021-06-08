@@ -39,7 +39,7 @@
           </Column>
         </columns>
         <items>
-          <ColumnListItem >
+          <ColumnListItem press="toDetails" type="Navigation">
             <cells>
               <Text text="{products>ProductID}" />
               <Text text="{products>ProductName}" />
