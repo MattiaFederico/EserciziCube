@@ -16,25 +16,25 @@
     <content>
       <Table id="prodotti" items="{products>/Products}">
         <columns>
-          <Column>
+          <Column minScreenWidth="Medium" demandPopin="true">
             <Text text="Product ID" />
           </Column>
-          <Column>
+          <Column minScreenWidth="Medium" demandPopin="true">
             <Text text="Product Name" />
           </Column>
-          <Column>
+          <Column minScreenWidth="Medium">
             <Text text="Quantity Per Unit" />
           </Column>
-          <Column>
+          <Column minScreenWidth="Medium" demandPopin="true">
             <Text text="Unit Price" />
           </Column>
-          <Column>
+          <Column minScreenWidth="Medium" demandPopin="true">
             <Text text="Units in Stock" />
           </Column>
-          <Column>
+          <Column minScreenWidth="Medium">
             <Text text="Discontinued" />
           </Column>
-          <Column visible="{= ${device>/system/desktop} }">
+          <Column visible="{= ${device>/system/desktop} }" minScreenWidth="Medium">
             <Text text="Disponibilità"/>
           </Column>
         </columns>

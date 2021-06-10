@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <Dialog title="Fornitori" id="suppliersDialog">
+    <List id="suppliersList" items="{Suppliers>/Suppliers}">
+      <items>
+        <ObjectListItem type="Active" 
+        press="onSupplierSelect" 
+        title="{Suppliers>CompanyName}" 
+        number="{Suppliers>SupplierID}"/>
+      </items>
+    </List>
+    <Button class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd" press="onDialogClose" text="Chiudi"/>
+  </Dialog>
+</core:FragmentDefinition>

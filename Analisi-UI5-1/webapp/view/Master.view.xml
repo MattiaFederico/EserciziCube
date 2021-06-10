@@ -8,11 +8,18 @@
 >
   <Page title="{i18n>mainTitle}">
     <content>
-      <GenericTile class="sapUiMediumMarginTop sapUiMediumMarginBegin" imageDescription="sap-icon://product" header="Lista Prodotti" press="onNavTo('anagrafica')">
-        <TileContent >
-          <core:Icon src="sap-icon://product" height="100%" width="100%" size="75px"/>
-        </TileContent>
-      </GenericTile>
+      <FlexBox alignContent="Center" alignItems="Center" justifyContent="Center">
+        <GenericTile class="sapUiSmallMargin" imageDescription="sap-icon://product" header="Lista Prodotti" press="onNavTo('anagrafica')">
+          <TileContent >
+            <core:Icon src="sap-icon://product" height="100%" width="100%" size="75px"/>
+          </TileContent>
+        </GenericTile>
+        <GenericTile class="sapUiSmallMargin" header="Fornitori" press="onNavTo('fornitori')">
+          <TileContent >
+            <core:Icon src="sap-icon://supplier" height="100%" width="100%" size="75px" />
+          </TileContent>
+        </GenericTile>
+      </FlexBox>
     </content>
   </Page>
 </mvc:View>

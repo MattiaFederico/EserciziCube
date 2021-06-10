@@ -75,6 +75,11 @@
           "pattern": "anagrafica/{ProductID}",
           "name": "productDetails",
           "target": "productDetails"
+        },
+        {
+          "pattern": "fornitori",
+          "name": "fornitori",
+          "target": "fornitori"
         }
       ],
       "targets": {
@@ -92,6 +97,10 @@
           "viewId": "productDetails",
           "viewName": "ProductDetails",
           "viewLevel": 3
+        },
+        "fornitori": {
+          "viewId": "Suppliers",
+          "viewName": "Suppliers"
         }
       }
     }
