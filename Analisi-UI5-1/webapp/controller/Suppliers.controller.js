@@ -54,8 +54,12 @@ sap.ui.define([
       });
       return validator;
     },
-    onSupplierSelect: function() {
+    onSupplierSelect: function( oEvent ) {
       //Codice futuro
+      let itemID = parseInt(oEvent.getSource().getProperty("number"));
+      let input = this.byId("suppliersInput");
+      input.setValue(itemID);
+      this.onDialogClose();
     }
   });
 });

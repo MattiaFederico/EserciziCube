@@ -8,13 +8,13 @@
 >
   <Page title="{i18n>mainTitle}">
     <content>
-      <FlexBox alignContent="Center" alignItems="Center" justifyContent="Center">
-        <GenericTile class="sapUiSmallMargin" imageDescription="sap-icon://product" header="Lista Prodotti" press="onNavTo('anagrafica')">
+      <FlexBox class="sapUiResponsiveMargin" alignContent="Center" direction="{= ${device>/system/desktop} ? 'Row' : 'Column'}" alignItems="Center" justifyContent="Center">
+        <GenericTile class="sapUiSmallMargin" imageDescription="sap-icon://product" header="{i18n>productsGenericTile.header}" press="onNavTo('anagrafica')">
           <TileContent >
             <core:Icon src="sap-icon://product" height="100%" width="100%" size="75px"/>
           </TileContent>
         </GenericTile>
-        <GenericTile class="sapUiSmallMargin" header="Fornitori" press="onNavTo('fornitori')">
+        <GenericTile class="sapUiSmallMargin" header="{i18n>suppliersGenericTile.header}" press="onNavTo('fornitori')">
           <TileContent >
             <core:Icon src="sap-icon://supplier" height="100%" width="100%" size="75px" />
           </TileContent>

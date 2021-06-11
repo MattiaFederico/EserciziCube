@@ -1,7 +1,7 @@
 <core:FragmentDefinition
   xmlns="sap.m"
   xmlns:core="sap.ui.core">
-  <Dialog title="Fornitori" id="suppliersDialog">
+  <Dialog title="{i18n>suppliersDialog.title}" id="suppliersDialog">
     <List id="suppliersList" items="{Suppliers>/Suppliers}">
       <items>
         <ObjectListItem type="Active" 
@@ -10,6 +10,6 @@
         number="{Suppliers>SupplierID}"/>
       </items>
     </List>
-    <Button class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd" press="onDialogClose" text="Chiudi"/>
+    <Button class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd" press="onDialogClose" text="{i18n>suppliersDialogButton.text}"/>
   </Dialog>
 </core:FragmentDefinition>

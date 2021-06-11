@@ -11,8 +11,8 @@
     <content>
       <FlexBox justifyContent="Center" alignItems="Center" direction="Row">
         <Panel backgroundDesign="Transparent">
-          <Label text="ID Fornitore" />
-          <Input class="sapUiSmallMarginTop" type="Number" liveChange="liveChange" submit="onSubmit" placeholder="Inserire un Fornitore..." showValueHelp="true" valueHelpRequest="onDialogOpen"/>
+          <Label text="{i18n>suppliersID}" />
+          <Input id="suppliersInput" class="sapUiSmallMarginTop" type="Number" liveChange="liveChange" submit="onSubmit" placeholder="{i18n>suppliersInput.placeholder}" showValueHelp="true" valueHelpRequest="onDialogOpen"/>
         </Panel>
       </FlexBox>
     </content>
