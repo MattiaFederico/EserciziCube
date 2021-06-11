@@ -80,6 +80,11 @@
           "pattern": "fornitori",
           "name": "fornitori",
           "target": "fornitori"
+        },
+        {
+          "pattern": "fornitori/{SupplierID}",
+          "name": "suppliersDashboard",
+          "target": "suppliersDashboard"
         }
       ],
       "targets": {
@@ -101,6 +106,10 @@
         "fornitori": {
           "viewId": "Suppliers",
           "viewName": "Suppliers"
+        },
+        "suppliersDashboard": {
+          "viewId": "SuppliersDashboard",
+          "viewName": "SuppliersDashboard"
         }
       }
     }

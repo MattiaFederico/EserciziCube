@@ -7,9 +7,9 @@
   height="100%" 
   busyIndicatorDelay="0"
 >
-  <Page title="{i18n>suppliersTitle}" showNavButton="true" navButtonPress="onNavBack">
+  <Page title="{i18n>suppliers.title}" showNavButton="true" navButtonPress="onNavBack">
     <content>
-      <FlexBox justifyContent="Center" alignItems="Center" direction="Row">
+      <FlexBox justifyContent="Center" alignItems="Center" direction="Column">
         <Panel backgroundDesign="Transparent">
           <Label text="{i18n>suppliersID}" />
           <Input id="suppliersInput" class="sapUiSmallMarginTop" type="Number" liveChange="liveChange" submit="onSubmit" placeholder="{i18n>suppliersInput.placeholder}" showValueHelp="true" valueHelpRequest="onDialogOpen"/>

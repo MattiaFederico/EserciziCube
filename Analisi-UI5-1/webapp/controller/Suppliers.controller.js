@@ -32,10 +32,10 @@ sap.ui.define([
     },
     onSubmit: function( oEvent ) {
       let inputValue = parseInt(oEvent.getParameter("value"));
-      if( this.idChecker( inputValue ) ){
-        //Codice futuro
-      } else {
+      if( !this.idChecker( inputValue ) ){
         sap.m.MessageToast.show("Nessun fornitore associato");
+      } else {
+        this.getRouter().navTo("suppliersDashboard", { SupplierID: inputValue });
       }
     },
     liveChange: function( oEvent ) {
