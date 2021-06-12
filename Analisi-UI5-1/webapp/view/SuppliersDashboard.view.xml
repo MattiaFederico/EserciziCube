@@ -1,23 +1,29 @@
-<mvc:View xmlns:vk="sap.ui.vk" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" controllerName="App.controller.SuppliersDashboard">
+<mvc:View xmlns:vk="sap.ui.vk" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:mc="sap.suite.ui.microchart" controllerName="App.controller.SuppliersDashboard">
   <Page title="{i18n>suppliersDashboard.title}" showNavButton="true" navButtonPress="onNavBack">
     <content>
-      <FlexBox justifyContent="Center" alignItems="Center" direction="Column">
-        <Panel >
-          <Button press="showMore('contact')" class="sapUiTinyMarginBeginEnd" icon="sap-icon://hint"/>
-          <Button press="showMore('address')" class="sapUiTinyMarginBeginEnd" icon="sap-icon://inspection"/>
-          <List id="details">
+      <FlexBox justifyContent="SpaceAround" direction="RowReverse">
+        <FlexBox class="sapUiSmallMargin" width="15%" justifyContent="Start" direction="Column" alignItems="End">
+          <Label design="Bold" text="% Priorità"/>
+          <mc:RadialMicroChart id="radialChart" alignContent="Right"/>
+        </FlexBox>
+        <FlexBox width="90%" justifyContent="Center" alignItems="Center" direction="Column">
+          <Panel class="sapUiSmallMarginBegin">
+            <Button press="showMore('contact')" class="sapUiTinyMarginBeginEnd" icon="sap-icon://hint"/>
+            <Button press="showMore('address')" class="sapUiTinyMarginBeginEnd" icon="sap-icon://inspection"/>
+          </Panel>
+          <List id="details" class="sapUiMediumMarginTop sapUiSmallMarginBegin">
             <items>
-              <StandardListItem id="companyName" visible="false" title="{Suppliers>CompanyName}" />
-              <StandardListItem id="contactName" visible="false" title="{Suppliers>ContactName}" />
-              <StandardListItem id="contactTitle" visible="false" title="{Suppliers>ContactTitle}" />
-              <StandardListItem id="address" visible="false" title="{Suppliers>Address}" />
-              <StandardListItem id="city" visible="false" title="{Suppliers>City}" />
-              <StandardListItem id="region" visible="false" title="{Suppliers>Region}" />
-              <StandardListItem id="postalcode" visible="false" title="{Suppliers>PostalCode}" />
-              <StandardListItem id="country" visible="false" title="{Suppliers>Country}" />
+              <StandardListItem id="companyName" visible="false" title="{Suppliers>CompanyName}" wrapping="true"/>
+              <StandardListItem id="contactName" visible="false" title="{Suppliers>ContactName}" wrapping="true"/>
+              <StandardListItem id="contactTitle" visible="false" title="{Suppliers>ContactTitle}" wrapping="true"/>
+              <StandardListItem id="address" visible="false" title="{Suppliers>Address}" wrapping="true"/>
+              <StandardListItem id="city" visible="false" title="{Suppliers>City}" wrapping="true"/>
+              <StandardListItem id="region" visible="false" title="{Suppliers>Region}" wrapping="true"/>
+              <StandardListItem id="postalcode" visible="false" title="{Suppliers>PostalCode}" wrapping="true"/>
+              <StandardListItem id="country" visible="false" title="{Suppliers>Country}" wrapping="true"/>
             </items>
           </List>
-        </Panel>
+        </FlexBox>
       </FlexBox>
     </content>
   </Page>
