@@ -1,0 +1,32 @@
+<mvc:View controllerName="App.controller.Meeting" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+  <Page title="{i18n>meeting.title}" showNavButton="true" navButtonPress="onNavBack">
+    <content>
+      <FlexBox justifyContent="SpaceAround" direction="Column">
+        <Panel >
+          <HBox width="100%">
+            <Button icon="sap-icon://sort" press="sortById" />
+            <SearchField id="search" liveChange="filterList" placeholder="Filter Title or Description"/>
+          </HBox>
+        </Panel>
+        <List id="meeting" items="{
+          path: 'Meetings>/',
+          sorter: {
+            path: 'MeetupID',
+            descending: false
+          }
+        }">
+          <items>
+            <StandardListItem
+              infoState="Success"
+              wrapping="true"
+              counter="{Meetings>MeetupID}"
+              title="{Meetings>Title}"
+              description="{Meetings>Description}"
+              info="{ path: 'Meetings>EventDate', formatter: '.formatter.dateFormatter' }"
+            />
+          </items>
+        </List>
+      </FlexBox>
+    </content>
+  </Page>
+</mvc:View>

@@ -10,6 +10,13 @@ sap.ui.define([], function() {
       } else {
         return 'sap-icon://status-negative';
       }
+    },
+    dateFormatter: function( oDate ) {
+      let secs = oDate.slice(6);
+      secs = secs.substr(0, 13);
+      var newDate = new Date();
+      newDate.setTime(secs);
+      return newDate.toUTCString().substr(0,25);
     }
   };
 });

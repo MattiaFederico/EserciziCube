@@ -15,6 +15,7 @@ sap.ui.define([
         path: "/Suppliers/" + supplierPath,
         model: "Suppliers"
       });
+      debugger;
       this.chartInitializer();
     },
     showMore: function( sParameter ) {
@@ -40,6 +41,7 @@ sap.ui.define([
     chartInitializer: function() {
       let bindingContext = this.getView().getBindingContext("Suppliers");
       let key = bindingContext.getModel().getBindings()[7].getValue();
+      debugger;
       let chart = this.byId("radialChart");
       switch (key) {
         case 'USA':

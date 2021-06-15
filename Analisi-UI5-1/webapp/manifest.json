@@ -92,6 +92,11 @@
           "pattern": "fornitori/{SupplierID}",
           "name": "suppliersDashboard",
           "target": "suppliersDashboard"
+        },
+        {
+          "pattern": "meeting",
+          "name": "pianificazione",
+          "target": "meeting"
         }
       ],
       "targets": {
@@ -117,6 +122,10 @@
         "suppliersDashboard": {
           "viewId": "SuppliersDashboard",
           "viewName": "SuppliersDashboard"
+        },
+        "meeting": {
+          "viewId": "meeting",
+          "viewName": "Meeting"
         }
       }
     }

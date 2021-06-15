@@ -19,6 +19,11 @@
             <core:Icon src="sap-icon://supplier" height="100%" width="100%" size="75px" />
           </TileContent>
         </GenericTile>
+        <GenericTile visible="{= ${device>/system/desktop} }" class="sapUiSmallMargin" header="{i18n>planningGenericTile.header}" press="onNavTo('pianificazione')">
+          <TileContent >
+            <core:Icon src="sap-icon://manager" height="100%" width="100%" size="75px" />
+          </TileContent>
+        </GenericTile>
       </FlexBox>
     </content>
   </Page>

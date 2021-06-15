@@ -19,6 +19,9 @@ sap.ui.define([
       let suppliersModel = new JSONModel("./model/Suppliers.json")
       this.setModel(suppliersModel, "Suppliers");
 
+      let meetingsModel = new JSONModel("./model/Meetups.json")
+      this.setModel(meetingsModel, "Meetings");
+
       let oDeviceModel = new JSONModel(Device);
       oDeviceModel.setDefaultBindingMode("OneWay");
       this.setModel(oDeviceModel, "device");
