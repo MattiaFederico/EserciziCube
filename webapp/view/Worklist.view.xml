@@ -1,0 +1,132 @@
+<mvc:View
+	controllerName="products.products.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+    toggleHeaderOnTitleClick="false"
+    showFooter="true">
+
+		<semantic:titleHeading>
+			<Title
+				text="{i18n>worklistTitle}"
+				level="H2"/>
+    </semantic:titleHeading>
+    
+    <semantic:headerContent>
+      <IconTabBar id="iconTabBar" select="onSelectTab" expandable="false">
+        <items>
+          <IconTabFilter showAll="true" key="All" text="Products" count="{worklistView>/counters/allCount}"/>
+          <IconTabSeparator />
+          <IconTabFilter key="inStock" text="In stock" icon="sap-icon://message-success" iconColor="Positive" count="{worklistView>/counters/inStockCount}"/>
+          <IconTabFilter key="fewInStock" text="Few in stock" icon="sap-icon://message-warning" iconColor="Critical" count="{worklistView>/counters/fewInStockCount}"/>
+          <IconTabFilter key="noStock" text="No stock" icon="sap-icon://message-error" iconColor="Negative" count="{worklistView>/counters/noStockCount}"/>
+        </items>
+      </IconTabBar>
+    </semantic:headerContent>
+
+		<semantic:content>
+			<Table
+				id="table"
+				width="auto"
+				items="{
+					path: '/ProductSet',
+					sorter: {
+						path: 'ProductID',
+						descending: false
+          },
+          parameters: { expand: 'ToSupplier' }
+				}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+        updateFinished=".onUpdateFinished"
+        mode="MultiSelect">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							id="tableHeader"
+							text="{worklistView>/worklistTableTitle}"
+							level="H3"/>
+						<ToolbarSpacer />
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							search=".onSearch">
+							<layoutData>
+								<OverflowToolbarLayoutData
+									maxWidth="200px"
+									priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn" width="10%">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column id="unitNumberColumn" hAlign="End" width="10%">
+						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+          </Column>
+          <Column id="unitsInStockColumn" hAlign="End" width="10%">
+						<Text text="{i18n>tableWeightTitle}" id="WeightTitle"/>
+          </Column>
+          <Column id="supplierColumn" hAlign="End">
+						<Text text="{i18n>tableSupplierColumnTitle}" id="supplierColumnTitle"/>
+          </Column>
+          <Column id="contactColumn" hAlign="End">
+						<Text text="{i18n>tableContactColumnTitle}" id="contactColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press=".onPress">
+						<cells>
+							<ObjectIdentifier
+                title="{ProductID}"
+              />
+							<ObjectNumber
+								number="{
+									path: 'Price',
+									formatter: '.formatter.numberUnit'
+								}"
+                unit="{worklistView>/unitPrice}"
+              />
+              <ObjectNumber
+                number="{ parts: [ 'WeightMeasure', 'WeightUnit' ] }" 
+                state="{
+                  parts: [ 'WeightMeasure', 'WeightUnit' ],
+                  formatter: '.formatter.numberStock'
+                }"
+              />
+              <ObjectIdentifier text="{ToSupplier/CompanyName}" />
+              <ObjectIdentifier text="{ToSupplier/BusinessPartnerID}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+    <semantic:positiveAction>
+      <semantic:PositiveAction text="{i18n>semantic.positive}" press="addStock"/>
+    </semantic:positiveAction>
+
+    <semantic:negativeAction>
+      <semantic:NegativeAction  text="{i18n>semantic.negative}" press="removeProduct"/>
+    </semantic:negativeAction>
+
+	</semantic:SemanticPage>
+
+</mvc:View>

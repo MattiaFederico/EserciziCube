@@ -1,0 +1,100 @@
+<mvc:View xmlns:form="sap.ui.layout.form"
+	controllerName="products.products.controller.Object"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+    busyIndicatorDelay="{objectView>/delay}"
+    >
+
+    <semantic:titleBreadcrumbs>
+      <Breadcrumbs>
+        <Link press="onNavBack" text="Go Back"></Link>
+      </Breadcrumbs>
+    </semantic:titleBreadcrumbs>
+
+		<semantic:titleHeading>
+			<Title
+				text="{ProductID}"
+				level="H2"/>
+		</semantic:titleHeading>
+
+		<semantic:headerContent>
+			<FlexBox justifyContent="SpaceAround">
+        <Panel headerText="Product details" backgroundDesign="Solid">
+          <ObjectAttribute title="Nome Prodotto" text="{Name}" />
+          <ObjectAttribute title="Prezzo" text="{ path: 'Price', formatter: '.formatter.numberUnit' }" />
+          <ProgressIndicator class="sapUiSmallMarginTop"
+            percentValue="{= ${Price} > 1000 ? '100%' : '50%' }"
+            displayValue="{= ${Price} > 1000 ? '100%' : '50%' }"
+            showValue="true"
+            state="None" 
+          />
+        </Panel>
+      </FlexBox>
+    </semantic:headerContent>
+    
+    <semantic:content>
+      <Panel
+        class="sapUiContentPadding"
+        headerText="Inserire un nuovo prodotto">
+          <content>
+            <form:SimpleForm
+              id="createProductForm"
+              editable="true"
+              layout="ColumnLayout"
+              labelSpanXL="4"
+              labelSpanL="4"
+              labelSpanM="12"
+              labelSpanS="12"
+              adjustLabelSpan="false"
+              emptySpanXL="0"
+              emptySpanL="0"
+              emptySpanM="0"
+              emptySpanS="0"
+              columnsXL="2"
+              columnsL="2"
+              columnsM="2"
+              singleContainerFullSize="false">
+              <form:content>
+                <Label text="Product ID"/>
+                <Input id="productID" type="Text" value="{formData>/ProductID}" liveChange="formatProductID"/>
+                <Button id="checkID" width="40%" enabled="false" text="Check ID" press="checkProductID" />      
+                <Label text="Type Code"/>
+                <Input id="typeCode" type="Text" value="{formData>/TypeCode}" enabled="false"/>
+                <Label text="Tax Tarif Code"/>
+                <Input id="taxTarifCode" value="{ path: 'formData>/TaxTarifCode', type: 'sap.ui.model.type.Integer' }" enabled="false" valueLiveUpdate="true"/>
+                <Label text="Category"/>
+                <Input id="category" type="Text" value="{formData>/Category}" enabled="false"/>
+                <Label text="Product Name"/>
+                <Input id="productName" type="Text" value="{formData>/Name}"/>
+                <Label text="Description"/>
+                <Input id="description" type="Text" value="{formData>/Description}"/>
+                <Label text="Supplier ID"/>
+                <Input id="supplierID" type="Number" value="{formData>/SupplierID}" enabled="false"/>
+                <Label text="Supplier Name"/>
+                <Input id="supplierName" type="Text" value="{formData>/SupplierName}" enabled="false"/>
+                <Label text="Currency Code"/>
+                <Input id="currencyCode" type="Text" value="{formData>/CurrencyCode}" enabled="false"/>
+                <Label text="Measure Unit"/>
+                <Input id="measureUnit" type="Text" value="{formData>/MeasureUnit}" enabled="false"/>
+              </form:content>
+            </form:SimpleForm>
+            <Button id="saveData" enabled="false" class="sapUiResponsiveMargin" press="saveFormData" text="Save" />
+          </content>
+        </Panel>
+    </semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>
