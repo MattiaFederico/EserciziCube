@@ -38,6 +38,14 @@ sap.ui.define([
 
       let oList = this.byId("meeting");
       oList.getBinding("items").filter(filtersObj);
+    },
+    navToDetails: function( oControlEvent ) {
+      let itemPath = oControlEvent.getSource().getBindingContext("Meetings").getPath();
+			let item = this.getModel("Meetings").getProperty(itemPath);
+      let itemID = item.MeetupID;
+      
+			let oRouter = this.getRouter();
+      oRouter.navTo("meetingDetails", { MeetupID: itemID });
     }
   });
 });

@@ -18,6 +18,8 @@
           <items>
             <StandardListItem
               infoState="Success"
+              type="Active"
+              press="navToDetails"
               wrapping="true"
               counter="{Meetings>MeetupID}"
               title="{Meetings>Title}"

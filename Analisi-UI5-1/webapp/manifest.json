@@ -97,6 +97,11 @@
           "pattern": "meeting",
           "name": "pianificazione",
           "target": "meeting"
+        },
+        {
+          "pattern": "meeting/{MeetupID}",
+          "name": "meetingDetails",
+          "target": "meetingDetails"
         }
       ],
       "targets": {
@@ -125,7 +130,13 @@
         },
         "meeting": {
           "viewId": "meeting",
-          "viewName": "Meeting"
+          "viewName": "Meeting",
+          "viewLevel": 2
+        },
+        "meetingDetails": {
+          "viewId": "meetingDetails",
+          "viewName": "MeetingDetails",
+          "viewLevel": 3
         }
       }
     }
